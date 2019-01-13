@@ -31,5 +31,5 @@ for file in $files; do
 done
 
 #for proper neovim setup
-mkdir ~/.config/nvim
+#mkdir ~/.config/nvim
 mv $dir/init.vim ~/.config/nvim
