@@ -32,4 +32,4 @@ done
 
 #for proper neovim setup
 #mkdir ~/.config/nvim
-mv $dir/init.vim ~/.config/nvim
+cp $dir/init.vim ~/.config/nvim
