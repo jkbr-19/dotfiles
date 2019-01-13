@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'davidhalter/jedi-vim'
 Plug 'sirosen/vim-rockstar'
 Plug 'lervag/vimtex'
+Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
 call plug#end()
 
 "Plugin config
@@ -39,10 +40,11 @@ if extension == "tex"
 	map <F5> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR><CR>
 	map <F6> :te qpdfview --unique $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
 elseif extension == "cpp"
-	"map <F5> :!make $(echo file_name \| make <CR>
 	map <F5> :w <CR>:!make $(echo % \| sed 's/.cpp$//')<CR>
-	"map <F6> :!./file_name<CR>
 	map <F6> :!./$(echo % \| sed 's/.cpp$//')<CR>
+elseif extension == "c"
+	map <F5> :w <CR>:!make $(echo % \| sed 's/.c$//')<CR>
+	map <F6> :!./$(echo % \| sed 's/.c$//')<CR>
 endif
 "some leader mappings
 let mapleader = " "
