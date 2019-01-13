@@ -1,6 +1,7 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath
     source ~/.vimrc
+"HURZ
 
 "let g:clipboard = {
 "  \   'name': 'xclip-xfce4-clipman',
