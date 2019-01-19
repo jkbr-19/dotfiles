@@ -37,7 +37,7 @@ let file_name = expand('%:t:r')
 let file_path = expand('%:p')
 
 if extension == "tex"
-	map <F5> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR><CR>
+	map <F5> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
 	map <F6> :te qpdfview --unique $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
 elseif extension == "cpp"
 	map <F5> :w <CR>:!make $(echo % \| sed 's/.cpp$//')<CR>
@@ -45,6 +45,8 @@ elseif extension == "cpp"
 elseif extension == "c"
 	map <F5> :w <CR>:!make $(echo % \| sed 's/.c$//')<CR>
 	map <F6> :!./$(echo % \| sed 's/.c$//')<CR>
+elseif extension == "py"
+	map <F6> :w <CR>:!python3 %<CR>
 endif
 "some leader mappings
 let mapleader = " "
