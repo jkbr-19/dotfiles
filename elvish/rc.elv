@@ -11,5 +11,5 @@ fn krimpatul { pprint $edit:insert:binding }
 edit:-matcher[''] = [p]{ edit:match-prefix &smart-case $p }
 #edit:prompt = { tilde-abbr $pwd; put '>> ' }
 use readline-binding
-
-e:bash ~/sindarin-term/Sindarin_date
+use github.com/jkbr-19/sindarin-term/date-elv
+date-elv:date-elv "%n%t%A: %d.%B TA. %Y%n"
