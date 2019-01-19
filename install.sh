@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bash_aliases vimrc Xmodmap"    # list of files/folders to symlink in homedir
+files="bash_aliases vimrc Xmodmap elvish/rc.elv config/nvim/init.vim"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -29,7 +29,3 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
-
-#for proper neovim setup
-#mkdir ~/.config/nvim
-cp $dir/init.vim ~/.config/nvim
