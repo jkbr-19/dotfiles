@@ -11,7 +11,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'davidhalter/jedi-vim'
 Plug 'sirosen/vim-rockstar'
 Plug 'lervag/vimtex'
-Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
+"Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
+Plug 'chlorm/vim-elvish-syntax', { 'on_ft': ['elvish']}
 call plug#end()
 
 "Plugin config
