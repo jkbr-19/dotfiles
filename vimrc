@@ -21,6 +21,11 @@ let g:vimtex_compiler_enabled = 0
 "clipboard
 set clipboard+=unnamedplus
 
+"Autobrackets
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+
 "if has('syntax') && has('eval')
 "  packadd! matchit
 "endif
@@ -31,7 +36,7 @@ set ruler
 set backupdir=~/.vimtmp//
 set directory=~/.vimtmp//
 
-"Comüiling and such
+"Compiling and such
 let extension = expand('%:e')
 let file_name = expand('%:t:r')
 "complete path with filename

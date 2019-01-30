@@ -15,6 +15,7 @@ alias pi-net='ssh pi@10.0.0.2'
 alias jupyter-nb='jupyter-notebook ~/Documents/notebook'
 alias cjupyter='conda activate cling && jupyter-notebook ~/Documents/Cpp/notebook'
 alias quaternion='~/Downloads/quaternion-git-1107.AppImage'
+alias e='elvish'
 
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
@@ -76,34 +77,3 @@ function dotgit() {
 	git commit -m 'updated some files'
 	git push origin master
 }
-
-#Sindarin Dates
-weekday=$(date +"%a")
-month=$(date +"%m")
-case $weekday in 
-	Fri) day_sin="Ordillion";;
-	Sat) day_sin="Oranor";;
-	Sun) day_sin="Orithil";;
-	Mon) day_sin="Orgaladh";;
-	Tue) day_sin="Ormenel";;
-	Wed) day_sin="Orbelain";;
-	Thu) day_sin="Oraeron";;
-	*)
-esac
-case $month in
-	01) month_sin="Narwain";;
-	02) month_sin="Nínui";;
-	03) month_sin="Gwaeron";;
-	04) month_sin="Gwirith";;
-	05) month_sin="Lothron";;
-	06) month_sin="Nórui";;
-	07) month_sin="Cerweth";;
-	08) month_sin="Urui";;
-	09) month_sin="Ivanneth";;
-	10) month_sin="Narbeleth";;
-	11) month_sin="Hithui";;
-	12) month_sin="Girithron";;
-	*)
-esac
-
-date +"%n %t $day_sin: %d.$month_sin TA. %Y%n"
