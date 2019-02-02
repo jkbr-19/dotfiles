@@ -22,7 +22,6 @@ fn rock [@a]{
 }
 fn wetter [@a]{ e:python3 ~/Documents/Python/wetter.py $@a }
 fn dotgit {
-	#eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_rsa_git
 	git commit -m 'updated some files'
 	git push origin master
