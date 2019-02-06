@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bash_aliases vimrc Xmodmap elvish/rc.elv config/nvim/init.vim"    # list of files/folders to symlink in homedir
+files="bash_aliases vimrc Xmodmap elvish/rc.elv config/nvim/init.vim config/herbstluftwm/autostart"    # list of files/folders to symlink in homedir
 
 ##########
 

@@ -1,6 +1,7 @@
 #"Aliases"
 fn v [@a]{ e:nvim $@a }
 fn vimrc { e:nvim ~/.vimrc }
+fn herbst-start { e:nvim ~/.config/herbstluftwm/autostart }
 fn ls [@a]{ e:ls --color $@a }
 fn rm [@a]{ e:rm -I $@a }
 fn pi-net { e:ssh pi@10.0.0.2 }

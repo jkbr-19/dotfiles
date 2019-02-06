@@ -16,6 +16,8 @@ alias jupyter-nb='jupyter-notebook ~/Documents/notebook'
 alias cjupyter='conda activate cling && jupyter-notebook ~/Documents/Cpp/notebook'
 alias quaternion='~/Downloads/quaternion-git-1107.AppImage'
 alias e='clear && elvish'
+alias riot='setsid flatpak run im.riot.Riot'
+alias neofetch='clear && neofetch'
 
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi

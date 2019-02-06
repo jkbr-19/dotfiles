@@ -19,7 +19,7 @@ call plug#end()
 let g:vimtex_compiler_enabled = 0
 
 "clipboard
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
 
 "Autobrackets
 inoremap { {}<Left>
