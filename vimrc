@@ -19,7 +19,7 @@ call plug#end()
 let g:vimtex_compiler_enabled = 0
 
 "clipboard
-"set clipboard+=unnamedplus
+"set clipboard=unnamedplus
 
 "Autobrackets
 inoremap { {}<Left>
@@ -44,7 +44,7 @@ let file_path = expand('%:p')
 
 if extension == "tex"
 	map <F5> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
-	map <F6> :te qpdfview --unique $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
+	map <F6> :te zathura $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
 elseif extension == "cpp"
 	map <F5> :w <CR>:!make $(echo % \| sed 's/.cpp$//')<CR>
 	map <F6> :!./$(echo % \| sed 's/.cpp$//')<CR>

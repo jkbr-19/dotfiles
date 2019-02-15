@@ -121,7 +121,7 @@ hc set frame_gap 4
 
 hc attr theme.active.color '#28bf80'
 hc attr theme.normal.color '#454545'
-hc attr theme.urgent.color orange
+hc attr theme.urgent.color '#faf08e'
 hc attr theme.inner_width 1
 hc attr theme.inner_color black
 hc attr theme.border_width 3
@@ -160,33 +160,35 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # hc detect_monitors
 
 # find the panel
-panel=~/.config/herbstluftwm/panel.sh
+panel=~/.config/polybar/launch.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
+	hc pad $monitor 25
     "$panel" $monitor &
 done
 
 #Eigene Commands
 hc keybind $Mod-b spawn firefox 
 hc keybind $Mod-d spawn dmenu_run_hlwm
-hc keybind $Mod-n spawn xfce4-terminal -x ranger 
-hc keybind $Mod-w spawn xfce4-terminal -x weechat
-hc keybind $Mod-t spawn xfce4-terminal -x htop
+hc keybind $Mod-n spawn st ranger 
+hc keybind $Mod-w spawn st weechat
+hc keybind $Mod-t spawn st htop
+hc keybind $Mod-Shift-s spawn xfce4-screenshooter
 
-## GIMP
-## ensure there is a gimp tag
+# GIMP
+# ensure there is a gimp tag
 hc add gimp
 hc load gimp '
 (split horizontal:0.850000:0
-(split horizontal:0.200000:1
-(clients vertical:0)
-(clients grid:0))
-(clients vertical:0))
+  (split horizontal:0.200000:1
+    (clients vertical:0)
+    (clients grid:0))
+  (clients vertical:0))
 '               # load predefined layout
 # center all other gimp windows on gimp tag
 hc rule class=Gimp tag=gimp index=01 pseudotile=on
 hc rule class=Gimp windowrole~'gimp-(image-window|toolbox|dock)' \
-pseudotile=off
+    pseudotile=off
 hc rule class=Gimp windowrole=gimp-toolbox focus=off index=00
-hc rule class=Gimp windowrole=gimp-dock focus=off index=1
+hc rule class=Gimp windowrole=gimp-dock focus=off index=02

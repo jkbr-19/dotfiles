@@ -3,7 +3,7 @@
 #vim zeugs
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
-export VISUAL=vim
+export VISUAL=nvim
 alias v='nvim'
 
 shopt -s expand_aliases
@@ -79,3 +79,4 @@ function dotgit() {
 	git commit -m 'updated some files'
 	git push origin master
 }
+alias tb="nc termbin.com 9999"
