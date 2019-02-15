@@ -14,9 +14,6 @@ alias bashal='nvim ~/.bash_aliases'
 alias pi-net='ssh pi@10.0.0.2'
 alias jupyter-nb='jupyter-notebook ~/Documents/notebook'
 alias cjupyter='conda activate cling && jupyter-notebook ~/Documents/Cpp/notebook'
-alias quaternion='~/Downloads/quaternion-git-1107.AppImage'
-alias e='clear && elvish'
-alias riot='setsid flatpak run im.riot.Riot'
 alias neofetch='clear && neofetch'
 
 
@@ -65,12 +62,6 @@ function conda_init() {
 	fi
 	unset __conda_setup
 	# <<< conda init <<<
-}
-
-function musik() {
-	rhythmbox-client --print-playing-format="	%tn. %tt - %ta"
-	rhythmbox-client --print-playing-format="	%at [%ay]"
-	rhythmbox-client --print-playing-format="	(%te/%td)"
 }
 
 function dotgit() {
