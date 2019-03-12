@@ -11,8 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'davidhalter/jedi-vim'
 Plug 'sirosen/vim-rockstar'
 Plug 'lervag/vimtex'
-"Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
-Plug 'chlorm/vim-elvish-syntax', { 'on_ft': ['elvish']}
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 "Plugin config
@@ -53,6 +52,10 @@ elseif extension == "c"
 	map <F6> :!./$(echo % \| sed 's/.c$//')<CR>
 elseif extension == "py"
 	map <F6> :w <CR>:!python3 %<CR>
+elseif extension == "md"
+	let g:vim_markdown_math = 1
+	map <F5> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
+	map <F6> :te zathura $(echo % \| sed 's/.md$/.pdf/')<CR><CR><C-^>
 endif
 "some leader mappings
 let mapleader = " "

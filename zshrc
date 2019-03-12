@@ -8,7 +8,7 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="philips"
+  ZSH_THEME="philips"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,8 +108,13 @@ alias zshrc='nvim ~/.zshrc'
 alias v='nvim'
 alias pvpn='sudo pvpn'
 alias pi-net='ssh pi@10.0.0.2'
+alias TFN='scp pi@10.0.0.2:/home/pi/TFN.txt /tmp/ && nvim /tmp/TFN.txt'
 alias conda_init='.  ~/miniconda3/etc/profile.d/conda.sh && conda activate base'
 alias time_backup='sudo timeshift --check'
+alias jupyter-nb='jupyter-notebook --ip=127.0.0.1 ~/Documents/notebook'
+alias neofetch='clear && neofetch'
+alias pvpnQ='sudo pvpn -c AT#2'
+alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
 
 #functions
 function dotgit() {
