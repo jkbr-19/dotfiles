@@ -44,6 +44,9 @@ let file_path = expand('%:p')
 if extension == "tex"
 	map <F5> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
 	map <F6> :te zathura $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
+	inoremap _ _{}<Left>
+	inoremap ^ ^{}<Left>
+	inoremap $ $$<Left>
 elseif extension == "cpp"
 	map <F5> :w <CR>:!make $(echo % \| sed 's/.cpp$//')<CR>
 	map <F6> :!./$(echo % \| sed 's/.cpp$//')<CR>
@@ -56,6 +59,9 @@ elseif extension == "md"
 	let g:vim_markdown_math = 1
 	map <F5> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
 	map <F6> :te zathura $(echo % \| sed 's/.md$/.pdf/')<CR><CR><C-^>
+	inoremap _ _{}<Left>
+	inoremap ^ ^{}<Left>
+	inoremap $ $$<Left>
 endif
 "some leader mappings
 let mapleader = " "

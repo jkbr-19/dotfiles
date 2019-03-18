@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/jkbr/.oh-my-zsh"
+  export ZSH="/home/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -93,7 +93,7 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/jkbr/.zshrc'
+zstyle :compinstall filename '/home/$USER/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -115,6 +115,8 @@ alias jupyter-nb='jupyter-notebook --ip=127.0.0.1 ~/Documents/notebook'
 alias neofetch='clear && neofetch'
 alias pvpnQ='sudo pvpn -c AT#2'
 alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
+alias apts='calcurse -a'
+alias todo='calcurse -t'
 
 #functions
 function dotgit() {
