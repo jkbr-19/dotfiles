@@ -54,10 +54,9 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = freemono:pixelsize=10;1
+font-3 = DroidSansMono:pixelsize=16:antialias=true:autohint=true
 
-
-modules-left = powermenu xworkspaces xwindow 
+modules-left = powermenu xworkspaces system-usb-udev xwindow 
 modules-center = mpd 
 modules-right = pulseaudio cpu eth wlan battery date 
 
@@ -251,9 +250,9 @@ bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-fill = -
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = -
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -359,8 +358,22 @@ menu-2-1-exec = menu-open-0
 ;polybar-scripts modules
 [module/vpn-openvpn-status]
 type = custom/script
-exec = ~/Clone/polybar-scripts/polybar-scripts/vpn-openvpn-status/vpn-openvpn-status.sh
+exec = ~/.Clone/polybar-scripts/polybar-scripts/vpn-openvpn-status/vpn-openvpn-status.sh
 interval = 5
+
+[module/system-usb-udev]
+type = custom/script
+exec = ~/.Clone/polybar-scripts/polybar-scripts/system-usb-udev/system-usb-udev.sh
+tail = true
+click-left = ~/.Clone/polybar-scripts/polybar-scripts/system-usb-udev/system-usb-udev.sh --mount
+click-right = ~/.Clone/polybar-scripts/polybar-scripts/system-usb-udev/system-usb-udev.sh --unmount
+
+[module/info-hlwm-workspaces]
+type = custom/script
+exec = ~/.Clone/polybar-scripts/polybar-scripts/info-hlwm-workspaces/info-hlwm-workspaces.sh
+tail = true
+scroll-up = herbstclient use_index -1 --skip-visible
+scroll-down = herbstclient use_index +1 --skip-visible
 
 [settings]
 screenchange-reload = true

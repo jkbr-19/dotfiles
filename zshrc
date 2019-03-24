@@ -8,7 +8,7 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-  ZSH_THEME="philips"
+  ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -117,6 +117,7 @@ alias pvpnQ='sudo pvpn -c AT#2'
 alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
 alias apts='calcurse -a'
 alias todo='calcurse -t'
+alias red='setsid redshift -l 47.06:15.45'
 
 #functions
 function dotgit() {
