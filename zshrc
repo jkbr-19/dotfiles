@@ -98,33 +98,10 @@ zstyle :compinstall filename '/home/$USER/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+if [ "$HOST" = "hoestelos" ]; then
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
-#autoload -Uz promptinit
-#promptinit
-#prompt walters
-
-#Aliases
-alias zshrc='nvim ~/.zshrc'
-alias v='nvim'
-alias pvpn='sudo pvpn'
-alias pi-net='ssh pi@10.0.0.2'
-alias TFN='scp pi@10.0.0.2:/home/pi/TFN.txt /tmp/ && nvim /tmp/TFN.txt'
-alias conda_init='.  ~/miniconda3/etc/profile.d/conda.sh && conda activate base'
-alias time_backup='sudo timeshift --check'
-alias jupyter-nb='jupyter-notebook --ip=127.0.0.1 ~/Documents/notebook'
-alias neofetch='clear && neofetch'
-alias pvpnQ='sudo pvpn -c AT#2'
-alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
-alias apts='calcurse -a'
-alias todo='calcurse -t'
-alias red='setsid redshift -l 47.06:15.45'
-
-#functions
-function dotgit() {
-	eval "$(ssh-agent -s)"
-	ssh-add ~/.ssh/id_rsa_git
-	git commit -m 'updated some files'
-	git push origin master
-}
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.bash_aliases
