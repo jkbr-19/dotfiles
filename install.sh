@@ -23,6 +23,11 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
+echo "Making sure all the directories exist"
+mkdir -p ~/.config/herbstluftwm
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/polybar/Scripts
+
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
