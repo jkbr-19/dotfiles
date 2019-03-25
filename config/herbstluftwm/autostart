@@ -177,12 +177,13 @@ hc keybind $Mod-w spawn st weechat
 hc keybind $Mod-t spawn st htop
 hc keybind $Mod-Shift-s spawn xfce4-screenshooter
 hc keybind $Mod-m spawn st vimpc
+hc keybind $Mod-Shift-m spawn ~/.Skripten/music_menu.sh
 
 #Media Key
 hc keybind XF86AudioPlay spawn mpc toggle
 hc keybind XF86AudioStop spawn mpc stop
 hc keybind XF86AudioNext spawn mpc next
 hc keybind XF86AudioPrev spawn mpc prev
-hc keybind XF86AudioMute spawn ~/.Skripten/music_menu.sh
-hc keybind XF86AudioRaiseVolume spawn mpc volume +2
-hc keybind XF86AudioLowerVolume spawn mpc volume -2
+hc keybind XF86AudioMute spawn pactl set-sink-mute 0 toggle
+hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume 0 +2%
+hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume 0 -2%

@@ -56,7 +56,7 @@ font-3 = DroidSansMono:pixelsize=16:antialias=true:autohint=true
 
 modules-left = power-menu xworkspaces  mpd
 modules-center = xwindow 
-modules-right = system-usb-udev volume wifi battery cpu date
+modules-right = system-usb-udev volume wifi wired battery date
 
 tray-position = right
 tray-padding = 4
