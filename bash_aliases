@@ -51,7 +51,7 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 
 #functions
 function dotgit() {
-	#eval "$(ssh-agent -s)"
+	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_rsa_git
 	git add *
 	git commit -m 'updated some files'
