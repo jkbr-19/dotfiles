@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="bash_aliases zshrc vimrc Xmodmap config/polybar/* config/nvim/init.vim config/herbstluftwm/autostart"
+files="bash_aliases zshrc vimrc Xmodmap config/polybar/* config/nvim/init.vim config/herbstluftwm/autostart oh-my-zsh/custom/themes/rkj-conda.zsh-theme"
 # list of files/folders to symlink in homedir
 
 ##########
