@@ -66,38 +66,21 @@ plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-#if [[ -n $SSH_CONNECTION ]]; then
-#  export EDITOR='nvim'
-#else
-#  export EDITOR='nvim'
-#fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=500
 SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/$USER/.zshrc'
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+bindkey -s "^N" "ranger\n"
+
 if [ "$HOST" = "hoestelos" ]; then
 	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else

@@ -27,6 +27,7 @@ echo "Making sure all the directories exist"
 mkdir -p ~/.config/herbstluftwm
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/polybar/Scripts
+mkdir -p ~/.oh-my-zsh/custom/themes
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
