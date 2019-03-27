@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="bash_aliases zshrc vimrc Xmodmap config/polybar/* config/nvim/init.vim config/herbstluftwm/autostart oh-my-zsh/custom/themes/rkj-conda.zsh-theme"
+files="bash_aliases zshrc vimrc Xmodmap config/polybar/config.ini config/polybar/launch.sh config/polybar/scripts/* config/nvim/init.vim config/herbstluftwm/autostart oh-my-zsh/custom/themes/rkj-conda.zsh-theme"
 # list of files/folders to symlink in homedir
 
 ##########
@@ -26,7 +26,7 @@ echo "...done"
 echo "Making sure all the directories exist"
 mkdir -p ~/.config/herbstluftwm
 mkdir -p ~/.config/nvim
-mkdir -p ~/.config/polybar/Scripts
+mkdir -p ~/.config/polybar/scripts
 mkdir -p ~/.oh-my-zsh/custom/themes
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
