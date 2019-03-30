@@ -40,7 +40,8 @@ alias pi-net='ssh pi@10.0.0.2'
 alias TFN='scp pi@10.0.0.2:/home/pi/TFN.txt /tmp/ && nvim /tmp/TFN.txt'
 alias conda_init='.  ~/miniconda3/etc/profile.d/conda.sh && conda activate base && source ~/.zshrc'
 alias time_backup='sudo timeshift --check'
-alias jupyter-nb='jupyter-notebook --ip=127.0.0.1 ~/Documents/notebook'
+alias jpy='jupyter-notebook ~/Documents/notebook'
+alias jpy-uni='jupyter-notebook ~/Documents/Uni'
 alias neofetch='clear && neofetch'
 alias pvpnQ='sudo pvpn -c AT#2'
 alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
@@ -58,3 +59,6 @@ function dotgit() {
 	git push origin master
 }
 
+hc() {
+    herbstclient "$@"
+}

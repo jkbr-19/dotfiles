@@ -158,16 +158,19 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
 # or simply:
-# hc detect_monitors
+hc detect_monitors
 
 # find the panel
 panel=~/.config/polybar/launch.sh
+#panel=/etc/xdg/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+hc pad 0 17
+"$panel" &
+#for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
-	hc pad $monitor 19
-    "$panel" $monitor &
-done
+	#hc pad $monitor 17
+#    "$panel" $monitor &
+#done
 
 #Eigene Commands
 hc keybind $Mod-b spawn firefox 
