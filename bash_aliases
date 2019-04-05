@@ -1,6 +1,7 @@
 #!/bin/bash
 
 alias rm='rm -I'
+alias ls='ls --color'
 alias neofetch='clear && neofetch'
 alias vimrc='nvim ~/.vimrc'
 alias bashal='nvim ~/.bash_aliases'

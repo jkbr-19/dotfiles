@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="bash_aliases zshrc vimrc Xmodmap config/polybar/config.ini config/polybar/launch.sh config/polybar/scripts/* config/nvim/init.vim config/herbstluftwm/autostart oh-my-zsh/custom/themes/rkj-conda.zsh-theme"
+files="bash_aliases zshrc vimrc Xmodmap config/polybar/config.ini config/polybar/launch.sh config/polybar/scripts/* config/nvim/init.vim config/herbstluftwm/autostart"
 # list of files/folders to symlink in homedir
 
 ##########
@@ -30,3 +30,4 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+ln -s $dir/prompts/halflife.zsh ~/.zprompts/prompt_halflife_setup
