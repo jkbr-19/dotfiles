@@ -30,4 +30,5 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+mkdir ~/.zprompts
 ln -s $dir/prompts/halflife.zsh ~/.zprompts/prompt_halflife_setup
