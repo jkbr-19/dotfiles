@@ -16,12 +16,38 @@ autoload -Uz promptinit
 promptinit
 prompt halflife
 
+#keybindings
+
 bindkey -s "^N" "ranger\n"
+
+cdUndoKey() {
+  popd
+  zle       reset-prompt
+  echo
+  ls
+  zle       reset-prompt
+}
+
+cdParentKey() {
+  pushd ..
+  zle      reset-prompt
+  echo
+  ls
+  zle       reset-prompt
+}
+
+zle -N                 cdParentKey
+zle -N                 cdUndoKey
+bindkey '^P'      cdParentKey
+bindkey '^B'      cdUndoKey
+
 
 if [ "$HOST" = "hoestelos" ]; then
 	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
+elif [ "$HOST" = "raspberry" ]; then
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 source ~/.bash_aliases
