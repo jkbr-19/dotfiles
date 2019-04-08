@@ -173,7 +173,7 @@ hc pad 0 18
 #done
 
 #Eigene Commands
-hc keybind $Mod-b spawn firefox 
+hc keybind $Mod-b spawn $BROWSER
 hc keybind $Mod-d spawn ~/.config/polybar/scripts/rofi-launch.sh
 hc keybind $Mod-n spawn st ranger 
 hc keybind $Mod-w spawn st weechat

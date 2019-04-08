@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=500
@@ -50,4 +52,4 @@ else
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-source ~/.bash_aliases
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
