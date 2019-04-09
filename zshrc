@@ -43,13 +43,13 @@ zle -N                 cdUndoKey
 bindkey '^P'      cdParentKey
 bindkey '^B'      cdUndoKey
 
+function cr_file() {
+	[ -f $1 ] && . $1
+}
 
-if [ "$HOST" = "hoestelos" ]; then
-	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif [ "$HOST" = "raspberry" ]; then
-	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+cr_file /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+cr_file /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+cr_file /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+cr_file ~/.bash_aliases
 
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+[ -f ~/Documents/date-test.elv ] && elvish ~/Documents/date-test.elv
