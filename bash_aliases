@@ -2,10 +2,15 @@
 
 alias rm='rm -I'
 alias ls='ls --color'
+alias v='nvim'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias neofetch='clear && neofetch'
-alias vimrc='nvim ~/.vimrc'
+
+alias vrc='nvim ~/.vimrc'
+alias zshrc='nvim ~/.zshrc'
 alias bashal='nvim ~/.bash_aliases'
 alias zsrc='source ~/.zshrc'
+
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
 tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
@@ -15,6 +20,7 @@ alias path_py='cd ~/Documents/Python/'
 alias path_tex='cd ~/Documents/LaTeX'
 alias pdf_lab='cd ~/Documents/Uni/Labor_Ex2/KFU'
 alias tex_lab='cd ~/Dropbox/LaTeX_Labor'
+
 
 #rockstar transpiler
 function rock() {
@@ -35,22 +41,21 @@ function wetter() {
 alias tb="nc termbin.com 9999"
 
 #Aliases
-alias zshrc='nvim ~/.zshrc'
-alias v='nvim'
-alias pvpn='sudo pvpn'
 alias pi-net='ssh pi@10.0.0.2'
-alias TFN='scp pi@10.0.0.2:/home/pi/TFN.txt /tmp/ && nvim /tmp/TFN.txt'
-alias conda_init='.  ~/miniconda3/etc/profile.d/conda.sh && conda activate base && source ~/.zshrc'
 alias time_backup='sudo timeshift --check'
+alias red='setsid redshift -l 47.06:15.45'
+alias elv-date='elvish ~/Documents/date-test.elv'
+
+alias pvpn='sudo pvpn'
+alias pvpnQ='sudo pvpn -c AT#2'
+
+alias conda_init='.  ~/miniconda3/etc/profile.d/conda.sh && conda activate base'
 alias jpy='jupyter-notebook ~/Documents/notebook'
 alias jpy-uni='jupyter-notebook ~/Documents/Uni'
-alias neofetch='clear && neofetch'
-alias pvpnQ='sudo pvpn -c AT#2'
+
 alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
 alias apts='calcurse -a'
 alias todo='calcurse -t'
-alias red='setsid redshift -l 47.06:15.45'
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 #functions
 function dotgit() {
