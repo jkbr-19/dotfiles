@@ -9,12 +9,12 @@ endif"
 call plug#begin('~/.vim/plugged')
 "Liste von Plugins
 Plug 'davidhalter/jedi-vim'
-"Plug 'sirosen/vim-rockstar'
-Plug 'lervag/vimtex'
+Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
 Plug 'plasticboy/vim-markdown'
 Plug 'flazz/vim-colorschemes'
 Plug 'jvirtanen/vim-octave'
 call plug#end()
+
 
 "Plugin config
 let g:vimtex_compiler_enabled = 0
@@ -25,13 +25,14 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
 " Per default, netrw leaves unmodified buffers open. This autocommand
 " deletes netrw's buffer once it's hidden (using ':q', for example)
 autocmd FileType netrw setl bufhidden=delete
+
 
 "clipboard
 "set clipboard=unnamedplus
@@ -60,56 +61,73 @@ let file_path = expand('%:p')
 colorscheme mopkai
 "some cool colorthemes to try
 "chance of storm
-"
 
-if extension == "tex"
-	map <F5> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
+autocmd BufEnter *.tex call SetTexOption()
+function SetTexOption()
+	map <A-CR> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
 	map <F6> :te zathura $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
 	inoremap _ _{}<Left>
 	inoremap ^ ^{}<Left>
 	inoremap $ $$<Left>
 	colorscheme flattened_dark
+endfunction
 
-elseif extension == "cpp"
-	map <F5> :w <CR>:!make $(echo % \| sed 's/.cpp$//')<CR>
+autocmd BufEnter *.cpp call SetCppOption()
+function SetCppOption()
+	map <A-CR> :w <CR>:!make $(echo % \| sed 's/.cpp$//')<CR>
 	map <F6> :!./$(echo % \| sed 's/.cpp$//')<CR>
+endfunction
 
-elseif extension == "c"
-	map <F5> :w <CR>:!make $(echo % \| sed 's/.c$//')<CR>
+autocmd BufEnter *.c call SetCOption()
+function SetCOption()
+	map <A-CR> :w <CR>:!make $(echo % \| sed 's/.c$//')<CR>
 	map <F6> :!./$(echo % \| sed 's/.c$//')<CR>
+endfunction
 
-elseif extension == "py"
-	map <F5> :w <CR>:te python3 %<CR>i
+autocmd BufEnter *.py nested call SetPyOption()
+function SetPyOption()
+	map <A-CR> :w<CR>:belowright split term://python3 -i %<CR>:resize 17<CR>i
+endfunction
 
-elseif extension == "md"
+autocmd BufEnter *.m call SetOctOption()
+function SetOctOption()
+	map <A-CR> :w<CR>:belowright split term://octave --persist -q %<CR>:resize 17<CR>i
+	colorscheme cobalt
+endfunction
+
+autocmd BufEnter *.md call SetMdOption()
+function SetMdOption()
 	let g:vim_markdown_math = 1
-	map <F5> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
+	map <A-CR> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
 	map <F6> :te zathura $(echo % \| sed 's/.md$/.pdf/')<CR><CR><C-^>
 	inoremap _ _{}<Left>
 	inoremap ^ ^{}<Left>
 	inoremap $ $$<Left>
 	colorscheme flattened_dark
+endfunction
 
-elseif extension == 'm'
-	map <F5> :w <CR>:te octave %<CR>i
-	colorscheme cobalt
-
-endif
-"
-"some leader mappings
+"some key mappings
 let mapleader = " "
 let maplocalleader = " "
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 nnoremap  <leader>y  "+y
-""nnoremap  <leader>yy  "+yy
 
 " " Paste from clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+"window movement
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+"Terminal Buffer
+tnoremap <Esc> <C-\><C-n>
 
 "Python Indentation
 set tabstop=4
@@ -119,3 +137,5 @@ set fileformat=unix
     
 set encoding=utf-8
 set termguicolors
+
+"a paar tests mit autocmds

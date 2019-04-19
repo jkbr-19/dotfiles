@@ -39,5 +39,6 @@ epm:install &silent-if-installed=$true   \
 
 #Using all these modules
 use readline-binding
-use github.com/jkbr-19/sindarin-term/date-elv
-date-elv:date-elv "%n%t%A: %d.%B TA. %Y%n"
+#use github.com/jkbr-19/sindarin-term/date-elv
+use sindarin-term/date-elv
+#date-elv:date-elv "%n%t%A: %d.%B TA. %Y%n"

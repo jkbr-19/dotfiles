@@ -10,6 +10,7 @@ hc emit_hook reload
 
 #xsetroot -solid '#5A8E3A'
 nitrogen --restore &
+[[ -z $(pgrep -xU compton) ]] && compton --sw-opti &
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -181,6 +182,12 @@ hc keybind $Mod-t spawn st gotop
 hc keybind $Mod-Shift-s spawn xfce4-screenshooter
 hc keybind $Mod-m spawn st vimpc
 hc keybind $Mod-Shift-m spawn ~/.Skripten/music_menu.sh
+
+#B Lotzinn
+hc keybind $Mod-Control-m spawn xfce4-terminal --hide-scrollbar --hide-toolbar --hide-menubar -e cmatrix
+
+#Compositor
+hc keybind $Mod-Control-c spawn killall compton
 
 #Media Key
 hc keybind XF86AudioPlay spawn mpc toggle
