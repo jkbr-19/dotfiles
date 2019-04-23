@@ -70,3 +70,4 @@ function dotgit() {
 hc() {
     herbstclient "$@"
 }
+eval $(thefuck --alias)

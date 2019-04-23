@@ -42,12 +42,11 @@ inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
 
-"if has('syntax') && has('eval')
-"  packadd! matchit
-"endif
-let $BASH_ENV = "~/.bash_aliases"
+"some visual settings
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set number relativenumber
-set nohlsearch
+set hlsearch
+
 set ruler
 set backupdir=~/.vimtmp//
 set directory=~/.vimtmp//
@@ -128,6 +127,9 @@ nnoremap <leader>l <C-w>l
 
 "Terminal Buffer
 tnoremap <Esc> <C-\><C-n>
+
+" Make double-<Esc> clear search highlights
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
 "Python Indentation
 set tabstop=4
