@@ -47,8 +47,8 @@ alias time_backup='sudo timeshift --check'
 alias red='setsid redshift -l 47.06:15.45'
 alias elv-date='elvish ~/Documents/date-test.elv'
 
-alias pvpn='sudo pvpn'
-alias pvpnQ='sudo pvpn -c AT#2'
+alias pvpn='sudo protonvpn-cli'
+alias pvpnQ='sudo protonvpn-cli -c AT#5'
 
 alias conda_init='.  ~/miniconda3/etc/profile.d/conda.sh && conda activate base'
 alias jpy='jupyter-notebook ~/Documents/notebook'

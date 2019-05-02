@@ -1,4 +1,4 @@
 #!/bin/sh
 
-command -v pvpn &> /dev/null || echo ""
-status=$(sudo pvpn --status | grep "Server Name" | grep -o --regexp="[^ tab]\+$") && echo "VPN: $status"
+command -v protonvpn-cli &> /dev/null || echo ""
+status=$(sudo protonvpn-cli --status | grep "Server Name" | grep -o --regexp="[^ tab]\+$") && echo "VPN: $status"

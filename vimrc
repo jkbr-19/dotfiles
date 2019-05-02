@@ -9,15 +9,17 @@ endif"
 call plug#begin('~/.vim/plugged')
 "Liste von Plugins
 Plug 'davidhalter/jedi-vim'
-Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
+"Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
 Plug 'plasticboy/vim-markdown'
 Plug 'flazz/vim-colorschemes'
 Plug 'jvirtanen/vim-octave'
+Plug 'lervag/vimtex'
 call plug#end()
 
 
 "Plugin config
 let g:vimtex_compiler_enabled = 0
+
 
 "Netrw config
 let g:netrw_banner = 0
@@ -96,6 +98,7 @@ endfunction
 
 autocmd BufEnter *.md call SetMdOption()
 function SetMdOption()
+	let g:tex_conceal = ""
 	let g:vim_markdown_math = 1
 	map <A-CR> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
 	map <F6> :te zathura $(echo % \| sed 's/.md$/.pdf/')<CR><CR><C-^>
