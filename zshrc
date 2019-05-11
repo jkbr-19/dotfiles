@@ -18,6 +18,9 @@ autoload -Uz promptinit
 promptinit
 prompt halflife
 
+if (( ${+SSH_CONNECTION} ));  then
+	PROMPT=[SSH]-$PROMPT
+fi
 #keybindings
 
 bindkey -s "^N" "ranger\n"

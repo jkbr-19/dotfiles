@@ -176,7 +176,7 @@ hc pad 0 18
 #Eigene Commands
 hc keybind $Mod-b spawn $BROWSER
 hc keybind $Mod-d spawn ~/.config/polybar/scripts/rofi-launch.sh
-hc keybind $Mod-n spawn st ranger 
+hc keybind $Mod-e spawn st ranger 
 hc keybind $Mod-w spawn st weechat
 hc keybind $Mod-t spawn st gotop
 hc keybind $Mod-Shift-s spawn xfce4-screenshooter

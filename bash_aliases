@@ -17,10 +17,10 @@ transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho
 tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
 
 #Pfade
-alias path_py='cd ~/Documents/Python/'
+alias py='cd ~/Documents/Python/'
 alias path_tex='cd ~/Documents/LaTeX'
 alias pdf_lab='cd ~/Documents/Uni/Labor_Ex2/KFU'
-alias tex_lab='cd ~/Dropbox/LaTeX_Labor'
+alias tl='cd ~/Dropbox/LaTeX_Labor'
 
 
 #rockstar transpiler
@@ -57,6 +57,7 @@ alias jpy-uni='jupyter-notebook ~/Documents/Uni'
 alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
 alias apts='calcurse -a'
 alias todo='calcurse -t'
+alias pippin='pip3 install'
 
 #functions
 function dotgit() {

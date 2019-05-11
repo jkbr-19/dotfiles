@@ -59,7 +59,7 @@ let file_name = expand('%:t:r')
 "complete path with filename
 let file_path = expand('%:p')
 
-colorscheme mopkai
+"colorscheme mopkai
 "some cool colorthemes to try
 "chance of storm
 
@@ -67,7 +67,7 @@ autocmd BufEnter *.tex call SetTexOption()
 function SetTexOption()
 	map <A-CR> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
 	map <F6> :te zathura $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
-	inoremap _ _{}<Left>
+	"inoremap _ _{}<Left>
 	inoremap ^ ^{}<Left>
 	inoremap $ $$<Left>
 	colorscheme flattened_dark
@@ -88,12 +88,13 @@ endfunction
 autocmd BufEnter *.py nested call SetPyOption()
 function SetPyOption()
 	map <A-CR> :w<CR>:belowright split term://python3 -i %<CR>:resize 17<CR>i
+	colorscheme dracula
 endfunction
 
 autocmd BufEnter *.m call SetOctOption()
 function SetOctOption()
 	map <A-CR> :w<CR>:belowright split term://octave --persist -q %<CR>:resize 17<CR>i
-	colorscheme cobalt
+	colorscheme Tomorrow-Night-Bright
 endfunction
 
 autocmd BufEnter *.md call SetMdOption()
@@ -111,6 +112,7 @@ endfunction
 "some key mappings
 let mapleader = " "
 let maplocalleader = " "
+
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -127,6 +129,8 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
+
+nnoremap <leader>e :Vex<CR>
 
 "Terminal Buffer
 tnoremap <Esc> <C-\><C-n>
