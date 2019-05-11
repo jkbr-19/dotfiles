@@ -45,7 +45,7 @@ alias tb="nc termbin.com 9999"
 alias pi-net='ssh pi@10.0.0.2'
 alias time_backup='sudo timeshift --check'
 alias red='setsid redshift -l 47.06:15.45'
-alias elv-date='elvish ~/Documents/date-test.elv'
+alias elv-date='clear && elvish ~/Documents/date-test.elv'
 
 alias pvpn='sudo protonvpn-cli'
 alias pvpnQ='sudo protonvpn-cli -c AT#5'

@@ -19,7 +19,7 @@ promptinit
 prompt halflife
 
 if (( ${+SSH_CONNECTION} ));  then
-	PROMPT=[SSH]-$PROMPT
+	PROMPT=[SSH]$PROMPT
 fi
 #keybindings
 
