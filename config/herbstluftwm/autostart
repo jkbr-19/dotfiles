@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# this is a simple config for herbstluftwm
+# this is my config for herbstluftwm
 
 hc() {
     herbstclient "$@"
@@ -23,7 +23,7 @@ Mod=Mod4   # Use the super key as the main modifier
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
-hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
 
 # basic movement
 # focusing clients
@@ -69,10 +69,10 @@ tag_names=( {1..9} )
 tag_keys=( {1..9} 0 )
 
 hc rename default "${tag_names[0]}" || true
-for i in ${!tag_names[@]} ; do
+for i in "${!tag_names[@]}" ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
+    if [ -n "$key" ] ; then
         hc keybind "$Mod-$key" use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
     fi
@@ -121,7 +121,7 @@ hc set frame_bg_transparent 1
 hc set frame_transparent_width 5
 hc set frame_gap 4
 
-hc attr theme.active.color '#28bf80'
+hc attr theme.active.color '#CAA9FA'
 hc attr theme.normal.color '#454545'
 hc attr theme.urgent.color '#faf08e'
 hc attr theme.inner_width 1
@@ -174,7 +174,7 @@ hc pad 0 18
 #done
 
 #Eigene Commands
-hc keybind $Mod-b spawn $BROWSER
+hc keybind $Mod-b spawn "$BROWSER"
 hc keybind $Mod-d spawn ~/.config/polybar/scripts/rofi-launch.sh
 hc keybind $Mod-e spawn st ranger 
 hc keybind $Mod-w spawn st weechat
@@ -186,6 +186,7 @@ hc keybind $Mod-Shift-m spawn ~/.Skripten/music_menu.sh
 #Compositor
 hc keybind $Mod-Control-c spawn killall compton
 
+hc keybind XF86WLAN spawn ~/.Skripten/wifi-toggle.sh
 #Media Key
 hc keybind XF86AudioPlay spawn mpc toggle
 hc keybind XF86AudioStop spawn mpc stop

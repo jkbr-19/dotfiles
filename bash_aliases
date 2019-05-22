@@ -53,6 +53,7 @@ alias pvpnQ='sudo protonvpn-cli -c AT#5'
 alias conda_init='.  ~/miniconda3/etc/profile.d/conda.sh && conda activate base'
 alias jpy='jupyter-notebook ~/Documents/notebook'
 alias jpy-uni='jupyter-notebook ~/Documents/Uni'
+alias jpy-prot='jupyter-notebook ~/Dropbox/LaTeX_Labor'
 
 alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
 alias apts='calcurse -a'

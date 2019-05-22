@@ -36,6 +36,10 @@ let g:netrw_winsize = 25
 autocmd FileType netrw setl bufhidden=delete
 
 
+autocmd BufWritePost *Xresources !xrdb %
+autocmd BufWritePost *polybar/config.ini !/home/jkbr/.config/polybar/launch.sh
+autocmd BufWritePost *herbstluftwm/autostart !herbstclient reload
+
 "clipboard
 "set clipboard=unnamedplus
 
@@ -88,7 +92,7 @@ endfunction
 autocmd BufEnter *.py nested call SetPyOption()
 function SetPyOption()
 	map <A-CR> :w<CR>:belowright split term://python3 -i %<CR>:resize 17<CR>i
-	colorscheme dracula
+	colorscheme molokai
 endfunction
 
 autocmd BufEnter *.m call SetOctOption()
