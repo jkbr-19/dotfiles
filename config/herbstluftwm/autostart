@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# _               _         _   _        __ _ 
+#| |__   ___ _ __| |__  ___| |_| |_   _ / _| |___      ___ __ ___ 
+#| '_ \ / _ \ '__| '_ \/ __| __| | | | | |_| __\ \ /\ / / '_ ` _ \ 
+#| | | |  __/ |  | |_) \__ \ |_| | |_| |  _| |_ \ V  V /| | | | | | 
+#|_| |_|\___|_|  |_.__/|___/\__|_|\__,_|_|  \__| \_/\_/ |_| |_| |_| 
+
 # this is my config for herbstluftwm
 
 hc() {
@@ -24,6 +30,7 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
+#
 
 # basic movement
 # focusing clients
@@ -87,6 +94,13 @@ hc keybind $Mod-r remove
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-p pseudotile toggle
+
+# select layouts
+hc keybind $Mod-Control-g set_layout grid
+hc keybind $Mod-Control-v set_layout vertical
+hc keybind $Mod-Control-m set_layout max
+hc keybind $Mod-Control-z set_layout horizontal
+
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
@@ -94,6 +108,8 @@ hc keybind $Mod-space                                                           
             or , and . compare tags.focus.curframe_wcount = 2                   \
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
+
+hc set default_frame_layout 2
 
 # mouse
 hc mouseunbind --all
@@ -103,8 +119,8 @@ hc mousebind $Mod-Button3 resize
 
 # focus
 hc keybind $Mod-BackSpace   cycle_monitor
-hc keybind $Mod-Tab         cycle_all +1
-hc keybind $Mod-Shift-Tab   cycle_all -1
+hc keybind $Mod-Tab         cycle_frame +1
+hc keybind $Mod-Shift-Tab   cycle_all 1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
@@ -115,18 +131,20 @@ hc set frame_border_active_color '#222222'
 hc set frame_border_normal_color '#101010'
 hc set frame_bg_normal_color '#565656'
 hc set frame_bg_active_color '#83213A'
-hc set frame_border_width 1
+hc set frame_border_width 0
+hc set frame_border_inner_width 0
 hc set always_show_frame 1
 hc set frame_bg_transparent 1
-hc set frame_transparent_width 5
-hc set frame_gap 4
+hc set frame_transparent_width 0
+hc keybind $Mod-Control-i cycle_value frame_transparent_width 0 3
+hc set frame_gap 0
 
 hc attr theme.active.color '#CAA9FA'
 hc attr theme.normal.color '#454545'
 hc attr theme.urgent.color '#faf08e'
 hc attr theme.inner_width 1
 hc attr theme.inner_color black
-hc attr theme.border_width 3
+hc attr theme.border_width 2
 hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color black
@@ -134,7 +152,8 @@ hc attr theme.active.inner_color '#41455e'
 hc attr theme.active.outer_color '#41455e'
 hc attr theme.background_color '#141414'
 
-hc set window_gap 0
+hc set window_gap 9
+hc keybind $Mod-Control-f cycle_value window_gap 0 4 9
 hc set frame_padding 0
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
@@ -150,6 +169,8 @@ hc rule focus=on # normally focus new clients
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+hc rule class=Steam tag=3 pseudotile=on
+hc rule class=Lutris tag=3 pseudotile=on
 
 # unlock, just to be sure
 hc unlock
@@ -159,19 +180,16 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
 # or simply:
-hc detect_monitors
+#hc detect_monitors
 
-# find the panel
-panel=~/.config/polybar/launch.sh
-#panel=/etc/xdg/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-hc pad 0 18
-"$panel" &
-#for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-	#hc pad $monitor 17
-#    "$panel" $monitor &
-#done
+#when switching tags, moves the wanted tag to the focused monitor
+hc set swap_monitor_to_get_tag 1
+# if set detect_monitors is automatically executed upon connected, disconnect or resize of monitors
+hc set auto_detect_monitors 1
+
+#Automatic split arangement of first tag
+hc load 1 '(split horizontal:0.500000:1 (clients max:0 0x1600003) (split vertical:0.500000:0 (clients max:0 0x1000006) (clients max:0 0x2200001)))'
+hc load 3 '(clients max:1 0x2400027 0x4200006)'
 
 #Eigene Commands
 hc keybind $Mod-b spawn "$BROWSER"
@@ -195,3 +213,13 @@ hc keybind XF86AudioPrev spawn mpc prev
 hc keybind XF86AudioMute spawn pactl set-sink-mute 0 toggle
 hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume 0 +2%
 hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume 0 -2%
+
+# find the panel
+panel=~/.config/polybar/launch.sh
+#panel=/etc/xdg/herbstluftwm/panel.sh
+[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+hc pad 0 19
+"$panel" &
+if hc silent new_attr bool my_not_first_autostart ; then
+	hc spawn st
+fi

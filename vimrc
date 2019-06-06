@@ -1,5 +1,12 @@
+""
+"       _ 
+"__   _(_)_ __ ___  _ __ ___ 
+"\ \ / / | '_ ` _ \| '__/ __| 
+" \ V /| | | | | | | | | (__ 
+"  \_/ |_|_| |_| |_|_|  \___| 
+"
+"
 "vim-plug
-"des is für den Pluginmanager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -37,16 +44,16 @@ autocmd FileType netrw setl bufhidden=delete
 
 
 autocmd BufWritePost *Xresources !xrdb %
-autocmd BufWritePost *polybar/config.ini !/home/jkbr/.config/polybar/launch.sh
+"autocmd BufWritePost *polybar/config.ini !herbstclient reload
 autocmd BufWritePost *herbstluftwm/autostart !herbstclient reload
 
 "clipboard
 "set clipboard=unnamedplus
 
 "Autobrackets
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap ( ()<Left>
+"inoremap { {}<Left>
+"inoremap [ []<Left>
+"inoremap ( ()<Left>
 
 "some visual settings
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
@@ -56,6 +63,8 @@ set hlsearch
 set ruler
 set backupdir=~/.vimtmp//
 set directory=~/.vimtmp//
+
+set nocompatible
 
 "Compiling and such
 let extension = expand('%:e')
@@ -67,14 +76,25 @@ let file_path = expand('%:p')
 "some cool colorthemes to try
 "chance of storm
 
+function! Synctex()
+	" remove 'silent' for debugging
+	"execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
+	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . bufname('%')[:-5]. ".pdf"
+	redraw!
+endfunction
+
 autocmd BufEnter *.tex call SetTexOption()
 function SetTexOption()
 	map <A-CR> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
 	map <F6> :te zathura $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
+
+"	map <F5> :w <CR>:!pdflatex -synctex=1 %<CR>
+"	map <F6> :!vimura $(echo % \| sed 's/tex$/pdf/') &<CR><CR>
+"	map <C-enter> :call Synctex()<CR>
 	"inoremap _ _{}<Left>
-	inoremap ^ ^{}<Left>
-	inoremap $ $$<Left>
-	colorscheme flattened_dark
+"	inoremap ^ ^{}<Left>
+"	inoremap $ $$<Left>
+	colorscheme badwolf
 endfunction
 
 autocmd BufEnter *.cpp call SetCppOption()
@@ -98,7 +118,7 @@ endfunction
 autocmd BufEnter *.m call SetOctOption()
 function SetOctOption()
 	map <A-CR> :w<CR>:belowright split term://octave --persist -q %<CR>:resize 17<CR>i
-	colorscheme Tomorrow-Night-Bright
+	colorscheme moriarty
 endfunction
 
 autocmd BufEnter *.md call SetMdOption()
@@ -107,10 +127,10 @@ function SetMdOption()
 	let g:vim_markdown_math = 1
 	map <A-CR> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
 	map <F6> :te zathura $(echo % \| sed 's/.md$/.pdf/')<CR><CR><C-^>
-	inoremap _ _{}<Left>
-	inoremap ^ ^{}<Left>
-	inoremap $ $$<Left>
-	colorscheme flattened_dark
+"	inoremap _ _{}<Left>
+"	inoremap ^ ^{}<Left>
+"	inoremap $ $$<Left>
+	colorscheme moriarty
 endfunction
 
 "some key mappings

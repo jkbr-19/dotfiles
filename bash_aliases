@@ -3,6 +3,7 @@
 alias rm='rm -I'
 alias ls='ls --color'
 alias v='nvim'
+#alias vim='vim --servername vim'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias neofetch='clear && neofetch'
 alias rsync='rsync --progress'
@@ -11,6 +12,8 @@ alias vrc='nvim ~/.vimrc'
 alias zshrc='nvim ~/.zshrc'
 alias bashal='nvim ~/.bash_aliases'
 alias zsrc='source ~/.zshrc'
+alias bright='sudo nvim /sys/class/backlight/*/brightness'
+alias herbst='nvim ~/.config/herbstluftwm/autostart'
 
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
