@@ -16,7 +16,7 @@ hc emit_hook reload
 
 #xsetroot -solid '#5A8E3A'
 nitrogen --restore &
-[[ -z $(pgrep -xU compton) ]] && compton --sw-opti &
+#[[ -z $(pgrep -xU compton) ]] && compton --sw-opti &
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -120,7 +120,7 @@ hc mousebind $Mod-Button3 resize
 # focus
 hc keybind $Mod-BackSpace   cycle_monitor
 hc keybind $Mod-Tab         cycle_frame +1
-hc keybind $Mod-Shift-Tab   cycle_all 1
+hc keybind $Mod-Shift-Tab   cycle_frame -1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
@@ -193,7 +193,8 @@ hc load 3 '(clients max:1 0x2400027 0x4200006)'
 
 #Eigene Commands
 hc keybind $Mod-b spawn "$BROWSER"
-hc keybind $Mod-d spawn ~/.config/polybar/scripts/rofi-launch.sh
+#hc keybind $Mod-d spawn ~/.config/polybar/scripts/rofi-launch.sh
+hc keybind $Mod-d spawn dmenu_run_hlwm
 hc keybind $Mod-e spawn st ranger 
 hc keybind $Mod-w spawn st weechat
 hc keybind $Mod-t spawn st gotop

@@ -1,0 +1,97 @@
+[
+{
+	name=Hua Xing
+	commands=[
+		{
+			//=c open a terminal
+			type=note
+			id=48
+			shell=herbstclient spawn st
+		},
+		{
+			//=c# close client
+			type=note
+			id=49
+			shell=herbstclient close
+		},
+		{
+			//=d open dmenu run dialouge
+			type=note
+			id=50
+			shell=herbstclient spawn dmenu_run_hlwm
+		},
+		{
+			//=C_1 cycle through tags
+			type=note
+			id=24 
+			shell=herbstclient use_index -1 --skip-visible
+		},
+		{
+			//=D_1 cycle through tags
+			type=note
+			id=26 
+			shell=herbstclient use_index +1 --skip-visible
+		},
+		{
+			//=Eb_1 cycle through clients in a frame
+			type=note
+			id=27 
+			shell=herbstclient cycle
+		},
+		{
+			//=E_1 cycle through clients
+			type=note
+			id=28 
+			shell=herbstclient cycle_all
+		},
+		{
+			//=f
+			type=note
+			id=53
+			shell=herbstclient focus left
+		},
+		{
+			//=g
+			type=note
+			id=55
+			shell=herbstclient focus down
+		},
+		{
+			//=a
+			type=note
+			id=57
+			shell=herbstclient focus up
+		},
+		{
+			//=b
+			type=note
+			id=59
+			shell=herbstclient focus right
+		},
+		{
+			//=f#
+			type=note
+			id=54
+			shell=herbstclient split bottom 0.5
+		},
+		{
+			//=g# remove frames
+			type=note
+			id=56
+			shell=herbstclient remove
+		},
+		{
+			//=bb
+			type=note
+			id=58
+			shell=herbstclient split right 0.5
+		},
+		{
+			//=e cycle layouts within a frame
+			type=note
+			id=52
+			shell=herbstclient cycle_layout +1
+		}
+		]
+}
+]

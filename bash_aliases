@@ -2,7 +2,7 @@
 
 alias rm='rm -I'
 alias ls='ls --color'
-alias v='nvim'
+alias v='nvim --listen /tmp/nvimsocket'
 #alias vim='vim --servername vim'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias neofetch='clear && neofetch'
@@ -46,7 +46,6 @@ alias tb="nc termbin.com 9999"
 
 #Aliases
 alias pi-net='ssh pi@10.0.0.2'
-alias time_backup='sudo timeshift --check'
 alias red='setsid redshift -l 47.06:15.45'
 alias elv-date='clear && elvish ~/Documents/date-test.elv'
 

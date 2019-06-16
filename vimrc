@@ -25,8 +25,10 @@ call plug#end()
 
 
 "Plugin config
-let g:vimtex_compiler_enabled = 0
-
+"let g:vimtex_compiler_enabled = 0
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_automatic = 0
 
 "Netrw config
 let g:netrw_banner = 0
@@ -59,6 +61,8 @@ autocmd BufWritePost *herbstluftwm/autostart !herbstclient reload
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set number relativenumber
 set hlsearch
+setlocal foldmethod=indent
+setlocal spell spelllang=de_at
 
 set ruler
 set backupdir=~/.vimtmp//
@@ -76,25 +80,15 @@ let file_path = expand('%:p')
 "some cool colorthemes to try
 "chance of storm
 
-function! Synctex()
-	" remove 'silent' for debugging
-	"execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
-	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . bufname('%')[:-5]. ".pdf"
-	redraw!
+function Texit()
+	VimtexStop
+	VimtexClean
 endfunction
 
 autocmd BufEnter *.tex call SetTexOption()
 function SetTexOption()
-	map <A-CR> :w <CR>:!pdflatex --output-directory=$(pwd \| sed 's:$:/build/:') %<CR>
-	map <F6> :te zathura $(echo build/% \| sed 's/tex$/pdf/')<CR><CR><C-^>
-
-"	map <F5> :w <CR>:!pdflatex -synctex=1 %<CR>
-"	map <F6> :!vimura $(echo % \| sed 's/tex$/pdf/') &<CR><CR>
-"	map <C-enter> :call Synctex()<CR>
-	"inoremap _ _{}<Left>
-"	inoremap ^ ^{}<Left>
-"	inoremap $ $$<Left>
 	colorscheme badwolf
+	autocmd BufWinLeave <buffer> call Texit()
 endfunction
 
 autocmd BufEnter *.cpp call SetCppOption()
@@ -127,9 +121,6 @@ function SetMdOption()
 	let g:vim_markdown_math = 1
 	map <A-CR> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
 	map <F6> :te zathura $(echo % \| sed 's/.md$/.pdf/')<CR><CR><C-^>
-"	inoremap _ _{}<Left>
-"	inoremap ^ ^{}<Left>
-"	inoremap $ $$<Left>
 	colorscheme moriarty
 endfunction
 
@@ -156,6 +147,9 @@ nnoremap <leader>l <C-w>l
 
 nnoremap <leader>e :Vex<CR>
 
+nnoremap <leader>s ]s
+nnoremap <leader>S [s
+
 "Terminal Buffer
 tnoremap <Esc> <C-\><C-n>
 
@@ -170,5 +164,6 @@ set fileformat=unix
     
 set encoding=utf-8
 set termguicolors
+colorscheme dracula
 
 "a paar tests mit autocmds
