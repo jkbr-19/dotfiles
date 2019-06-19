@@ -14,6 +14,8 @@ alias bashal='nvim ~/.bash_aliases'
 alias zsrc='source ~/.zshrc'
 alias bright='sudo nvim /sys/class/backlight/*/brightness'
 alias herbst='nvim ~/.config/herbstluftwm/autostart'
+alias midi='zmidimap ~/dotfiles/hlwm.mim'
+alias xclip='xclip -selection clipboard'
 
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi

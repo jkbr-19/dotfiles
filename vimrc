@@ -30,6 +30,10 @@ let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_automatic = 0
 
+"markdown
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_fenced_languages = ['python3=py', 'ino=ino', 'bash=sh', 'ini=dosini', 'viml=vim', 'octave=m']
+
 "Netrw config
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -62,7 +66,6 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set number relativenumber
 set hlsearch
 setlocal foldmethod=indent
-setlocal spell spelllang=de_at
 
 set ruler
 set backupdir=~/.vimtmp//
@@ -89,6 +92,7 @@ autocmd BufEnter *.tex call SetTexOption()
 function SetTexOption()
 	colorscheme badwolf
 	autocmd BufWinLeave <buffer> call Texit()
+	setlocal spell spelllang=de_at
 endfunction
 
 autocmd BufEnter *.cpp call SetCppOption()
@@ -119,10 +123,21 @@ autocmd BufEnter *.md call SetMdOption()
 function SetMdOption()
 	let g:tex_conceal = ""
 	let g:vim_markdown_math = 1
+	setlocal spell spelllang=de_at
+	"setlocal nofoldmethod
+
 	map <A-CR> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
 	map <F6> :te zathura $(echo % \| sed 's/.md$/.pdf/')<CR><CR><C-^>
 	colorscheme moriarty
 endfunction
+
+autocmd BufEnter *.ino call SetInoOption()
+function SetInoOption()
+	"map <F5> :! arduino-cli compile -b arduino:avr:uno %<CR>
+	map <A-CR> :! arduino-cli upload %<CR>
+	"map <A-CR> :w<CR>:belowright split term://arduino-cli upload %<CR>:resize 17<CR>i
+endfunction
+
 
 "some key mappings
 let mapleader = " "
