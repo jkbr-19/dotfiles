@@ -64,6 +64,8 @@ alias apts='calcurse -a'
 alias todo='calcurse -t'
 alias pippin='pip3 install'
 
+alias pi-songs='sshfs pi@raspi:/media/GITGUD /home/jkbr/Music/Pi'
+
 #functions
 function dotgit() {
 	eval "$(ssh-agent -s)"

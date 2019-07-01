@@ -200,7 +200,7 @@ hc keybind $Mod-e spawn st ranger
 hc keybind $Mod-w spawn st weechat
 hc keybind $Mod-t spawn st gotop
 hc keybind $Mod-Shift-s spawn xfce4-screenshooter
-hc keybind $Mod-m spawn st vimpc
+hc keybind $Mod-m spawn st ncmpcpp
 hc keybind $Mod-Shift-m spawn ~/.Skripten/music_menu.sh
 
 #Compositor

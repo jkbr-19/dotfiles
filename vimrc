@@ -21,6 +21,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'flazz/vim-colorschemes'
 Plug 'jvirtanen/vim-octave'
 Plug 'lervag/vimtex'
+Plug 'freitass/todo.txt-vim'
 call plug#end()
 
 
@@ -29,6 +30,8 @@ call plug#end()
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_automatic = 0
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_manual = 1
 
 "markdown
 let g:vim_markdown_conceal = 0
@@ -133,7 +136,7 @@ endfunction
 
 autocmd BufEnter *.ino call SetInoOption()
 function SetInoOption()
-	"map <F5> :! arduino-cli compile -b arduino:avr:uno %<CR>
+	map <F5> :! arduino-cli compile -b arduino:avr:uno %<CR>
 	map <A-CR> :! arduino-cli upload %<CR>
 	"map <A-CR> :w<CR>:belowright split term://arduino-cli upload %<CR>:resize 17<CR>i
 endfunction
