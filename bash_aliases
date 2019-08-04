@@ -16,6 +16,10 @@ alias bright='sudo nvim /sys/class/backlight/*/brightness'
 alias herbst='nvim ~/.config/herbstluftwm/autostart'
 alias midi='zmidimap ~/dotfiles/hlwm.mim'
 alias xclip='xclip -selection clipboard'
+alias bakkman='sudo pacman'
+
+alias links='nvim ~/Phone-SD/Documents/markor/LinkBox.md'
+alias tfn='nvim ~/Phone-SD/Documents/markor/tfn.md'
 
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
@@ -60,11 +64,9 @@ alias jpy-uni='jupyter-notebook ~/Documents/Uni'
 alias jpy-prot='jupyter-notebook ~/Dropbox/LaTeX_Labor'
 
 alias bus='setsid zathura ~/Phone-SD/Documents/700_D_18_3.pdf'
-alias apts='calcurse -a'
-alias todo='calcurse -t'
 alias pippin='pip3 install'
 
-alias pi-songs='sshfs pi@raspi:/media/GITGUD /home/jkbr/Music/Pi'
+alias pi-songs='sshfs pi@raspi:/media/GITGUD /home/jkbr/Music/Pi && mpc update --wait'
 
 #functions
 function dotgit() {

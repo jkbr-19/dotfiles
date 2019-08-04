@@ -188,7 +188,7 @@ hc set swap_monitor_to_get_tag 1
 hc set auto_detect_monitors 1
 
 #Automatic split arangement of first tag
-hc load 1 '(split horizontal:0.550000:1 (clients max:0 0x1000003) (split vertical:0.400000:0 (clients max:0 0xc00006) (clients max:0 0x1400006)))'
+hc load 1 '(split horizontal:0.550000:1 (clients max:0 0x1800003) (clients vertical:0 0x1e00006 0xe00006))'
 
 hc load 3 '(clients max:1 0x2400027 0x4200006)'
 
@@ -201,10 +201,14 @@ hc keybind $Mod-w spawn st weechat
 hc keybind $Mod-t spawn st gotop
 hc keybind $Mod-Shift-s spawn xfce4-screenshooter
 hc keybind $Mod-m spawn st ncmpcpp
-hc keybind $Mod-Shift-m spawn ~/.Skripten/music_menu.sh
+#hc keybind $Mod-Shift-m spawn ~/.Skripten/music_menu.sh
+hc keybind $Mod-Control-p spawn passmenu
 
 #Compositor
-hc keybind $Mod-Control-c spawn killall compton
+#Screenshots
+hc keybind $Mod-Print spawn scrot -e 'mv $f /tmp/'
+hc keybind $Mod-Shift-Print spawn scrot --focused -e 'mv $f /tmp/'
+hc keybind $Mod-Control-Print spawn scrot --select -e 'mv $f /tmp/'
 
 hc keybind XF86WLAN spawn ~/.Skripten/wifi-toggle.sh
 #Media Key

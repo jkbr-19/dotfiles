@@ -126,7 +126,8 @@ autocmd BufEnter *.md call SetMdOption()
 function SetMdOption()
 	let g:tex_conceal = ""
 	let g:vim_markdown_math = 1
-	setlocal spell spelllang=de_at
+	"setlocal spell spelllang=de_at
+	"setlocal spell spelllang=en_gb
 	"setlocal nofoldmethod
 
 	map <A-CR> :w <CR>:!pandoc % -s -V geometry:a4paper -o $(echo % \| sed 's/.md$/.pdf/')<CR><CR>
@@ -183,5 +184,6 @@ set fileformat=unix
 set encoding=utf-8
 set termguicolors
 colorscheme dracula
+"colorscheme Atelier_EstuaryLight
 
 "a paar tests mit autocmds
